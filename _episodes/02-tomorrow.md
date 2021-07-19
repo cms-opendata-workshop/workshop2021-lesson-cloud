@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "See you tomorrow"
 teaching: 0
 exercises: 0
 questions:
