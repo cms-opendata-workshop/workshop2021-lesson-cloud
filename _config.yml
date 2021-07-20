@@ -12,12 +12,12 @@
 carpentry: "cms"
 
 # Overall title for pages.
-title: "Lesson Title"
+title: "Cloud Computing"
 
 # Life cycle stage of the lesson
 # See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
 # Possible values: "pre-alpha", "alpha", "beta", "stable", "deprecated", "superseded"
-life_cycle: "pre-alpha"
+life_cycle: "alpha"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -32,7 +32,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "team@carpentries.org"
+email: "cms-dpoa-coordinators@cern.ch"
 
 # Sites.
 amy_site: "https://amy.carpentries.org/"
