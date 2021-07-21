@@ -1,6 +1,6 @@
 ---
 title: "Kubectl and additional tools and services"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "What is kubectl?"

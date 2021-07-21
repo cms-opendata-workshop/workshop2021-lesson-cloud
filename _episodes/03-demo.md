@@ -1,6 +1,6 @@
 ---
 title: "Demo: Creating a cluster"
-teaching: 40
+teaching: 20
 exercises: 0
 questions:
 - "What are the basic concepts and jargon I need to know?"

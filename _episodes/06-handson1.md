@@ -1,5 +1,5 @@
 ---
-title: "Hands-on"
+title: "Hands-on 1"
 teaching: 0
 exercises: 0
 questions:
@@ -12,4 +12,3 @@ keypoints:
 FIXME
 
 {% include links.md %}
-
