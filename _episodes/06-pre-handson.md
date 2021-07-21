@@ -42,14 +42,14 @@ For example, jo.hn2000@cern.ch has a cluster-john200 > namespace "argo" > nfs-se
 
 To connect into your cluster we are going to use GCP CloudShell. Head to GCP > GKE > Clusters
 
-![image](/fig/gke.png)
+![image](../fig/gke.png)
 
 ---
 
 > ## Remmember
 > You can always use the filter with your ID to list only your resources
 >
-> ![image](/fig/filter.png)
+> ![image](../fig/filter.png)
 {: .discussion}
 
 ---
@@ -58,13 +58,13 @@ Find your cluster, press connect and chose  <b>run in cloud shell </b>
 
 
 
-![image](/fig/connect_1.png)
+![image](../fig/connect_1.png)
 
 
 Run `kubectl get pods -n argo` to get your pods in namespace argo, <br>
 `kubectl get svc -n argo` to see your services and their associated IPs
 
-![image](/fig/connect_2.png)
+![image](../fig/connect_2.png)
 
 
 ---
@@ -117,7 +117,7 @@ spec:
 {: .language-yaml}
 
 
-![image](/fig/argo.png)
+![image](../fig/argo.png)
 
 
 ## Accessing files via http
@@ -126,4 +126,4 @@ After your workflow run successfully.
 You can get the output from your http-fileserver 
 in your browser  open http-fileserver External IP
 
-![image](/fig/fileserver.png)
+![image](../fig/fileserver.png)
