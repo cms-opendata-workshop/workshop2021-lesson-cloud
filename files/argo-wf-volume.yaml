@@ -1,0 +1,22 @@
+# argo-wf-volume.ysml
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: test-hostpath-
+spec:
+  entrypoint: test-hostpath
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: nfs-1
+  templates:
+  - name: test-hostpath
+    script:
+      image: alpine:latest
+      command: [sh]
+      source: |
+        echo "This is the ouput" > /mnt/vol/test.txt
+        echo ls -l /mnt/vol: `ls -l /mnt/vol`
+      volumeMounts:
+      - name: task-pv-storage
+        mountPath: /mnt/vol
