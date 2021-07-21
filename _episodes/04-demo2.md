@@ -281,11 +281,11 @@ spec:
 {: .language-yaml}
 
 
-Now the workflow could access the disk. However is rather cumbersome to get the ouput outside the cluster.  One of he best ways to do that is to follow similar procedures to set up an http cluster for example.
+Now the workflow could access the disk. However is rather cumbersome to get the ouput outside the cluster.  One of he best ways to do that is to follow similar procedures to set up an http web server for example.
 
-As you can see all these tasks take time.  The good news is that there are tools to make the cluster creation and the setting up of volumes, pvs, pvcs, servers, services, etc., automatic.  This is what we will be doing for you for the upcoming hands-on part of this lesson.
+As you can see all these tasks take time.  The good news is that there are tools to make the cluster creation and the setting up of volumes, pvs, pvcs, servers, services, etc., automatic.  This is what we will be doing for you (using `Terraform`) for the upcoming hands-on part of this lesson.
 
-You will continue learning about this, hands-on, tomorrow.
+You will continue learning about this, hands-on, tomorrow, but concentrating on analysis workflows.
 
 
 
