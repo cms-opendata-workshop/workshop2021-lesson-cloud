@@ -66,7 +66,7 @@ To connect to your cluster we are going to use the GCP CloudShell. Head to GCP >
 
 ---
 
-> ## Remmember
+> ## Remember
 > You can always use the filter with your ID to list only your resources
 >
 > ![image](../fig/filter.png)
