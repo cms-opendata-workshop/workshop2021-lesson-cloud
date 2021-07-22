@@ -56,7 +56,10 @@ Before we submit this workflow, let's try to understand what this configuration 
 > `yaml` files are very picky about indentation: they have to, it is how they organize themselves.  Everything aligned under a certain level, corresponds to the same organizational block.  Be careful not to accidentally perturb this structure.
 {: .discussion}
 
-If you start reading it from top to bottom, the first thing you would notice is some general information about the `apiVersion` it is using to communicate to the K8s framework (in this case `argoproj.io/v1alpha1`), the `kind` of configuration it is (in this case a `Workflow`), and some `metadata`, which includes a `generateName` that will be used to identify its products (that is basically the reason why, in this case, `test-hostpath-` was defined with an extra `-`, so if it precedes filenames, it will nicely form a string name).
+If you start reading it from top to bottom:
+  - the first thing you would notice is some general information about the `apiVersion` it is using to communicate to the K8s framework (in this case `argoproj.io/v1alpha1`),
+  - the `kind` of configuration it is (in this case a `Workflow`)
+  - and some `metadata`, which includes a `generateName` that will be used to identify its products (that is basically the reason why, in this case, `test-hostpath-` was defined with an extra `-`, so if it precedes filenames, it will nicely form a string name).
 
 The `spec` is the blue print of whole deployment.  It starts at an `entrypoint`.  It is literally the place where the workflow will start processing routines.  In this case, the entrypoint is `test-hostpath` (you can give any name to these variables but they have to be consistent with the logic of the yaml).  We have to jump down to find its definition under `templates`.  You may recognize that this template is a template of a routine or action.  These templates are identified by their `name`s, and usually have a `script`, which are the commands that will be executed.  This script needs to perform through a container (after all K8s is all about containers) and so it calls the corresponding container `image` to be downloaded.  In the present case, the container will be just a simple `alpine:latest` linux container. Whatever commands are at the `source` tag will be executed through this container.  Also, this template has a `volumeMounts`, which works very similar to what we have been doing with our own container, i.e., mounting whatever `persistentVolumeClaim` disk was defined in the `volumes` section of the `spec`, in this case `nfs-<ID>` (our `pvc`, remember?), at the `/mnt/vol` directory `mountPath`.
 
@@ -152,7 +155,11 @@ If you click on the name, you can see a sort of workflow diagram.  Ok, in this c
 
 ## Let's spice things up
 
-Now we are going to run some serious workflow.  What we will be doing here is to mimic a full analysis flow (so, it is a full workflow) of essentially what we did already during the workshop.  We will start by automatically getting the list of files from the cern open portal with the contenerized [`cernopendata-client` tool](https://cernopendata-client.readthedocs.io/en/latest/).  Then we will generate a list of those files that we want to process;  we will then run a version of the `POET` code, then merge the outpufiles into a single `ROOT` file and finally run a simplified version of the `EventLoopAnalysisTemplate` to obtain our histograms.
+Now we are going to run some serious workflow.  What we will be doing here is to mimic a full analysis flow (so, it is a full workflow) of essentially what we did already during the workshop.  
+  
+We will start by automatically getting the list of files from the cern open portal with the containerized [`cernopendata-client` tool](https://cernopendata-client.readthedocs.io/en/latest/).  
+  
+Then we will generate a list of those files that we want to process;  we will then run a version of the `POET` code, then merge the output files into a single `ROOT` file and finally run a simplified version of the `EventLoopAnalysisTemplate` to obtain a test histogram to see if everything went well.
 
 Dowload the yaml file with:
 
