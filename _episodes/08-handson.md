@@ -1,13 +1,15 @@
 ---
-title: "Hands-on: Running and understanding simple Argo workflows"
+title: "Hands-on: Running and understanding Argo workflows"
 teaching: 0
-exercises: 0
+exercises: 40
 questions:
-- ""
+- "How are Argo workflows configured?"
+- "What are the main ingredients of an Argo yaml workflow file?"
 objectives:
-- ""
+- "Learn about the basic structure of Argo yaml workflow files"
+- "Learn how to put together differt steps in a workflow and make them run in series"
 keypoints:
-- ""
+- "With a simple but a tight yaml structure, a full-blown analysis can be performed using the Argo tool on a K8s cluster."
 ---
 
 ## Run a simple Argo workflow
@@ -148,7 +150,22 @@ Let's also the check the Argo GUI:
 
 If you click on the name, you can see a sort of workflow diagram.  Ok, in this case our workflow was more like a single task.  Let's make things a little bit more interesting.
 
-## Running a two-step Argo workflow
+## Let's spice things up
+
+Now we are going to run some serious workflow.  What we will be doing here is to mimic a full analysis flow (so, it is a full workflow) of essentially what we did already during the workshop.  We will start by automatically getting the list of files from the cern open portal with the contenerized [`cernopendata-client` tool](https://cernopendata-client.readthedocs.io/en/latest/).  Then we will generate a list of those files that we want to process;  we will then run a version of the `POET` code, then merge the outpufiles into a single `ROOT` file and finally run a simplified version of the `EventLoopAnalysisTemplate` to obtain our histograms.
+
+Dowload the yaml file with:
+
+```bash
+wget https://raw.githubusercontent.com/cms-opendata-workshop/workshop2021-poetpayload-cloud/master/PhysObjectExtractor/cloud/workshop_argo.yaml
+```
+
+Inpect it carefully and try to make sense of logic.  This is a good time to ask the experts in the room!
+
+Submit your workflow and get the results.
+
+Will you be able to change this file to process the dataset of your choice?, the files of your choice?, etc.?
+
 
 
 

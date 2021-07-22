@@ -62,7 +62,7 @@ spec:
         lastFile=$(( {{inputs.parameters.nFiles}}+{{inputs.parameters.firstFile}} ))
         realLastFile=$(( $lastFile - 1 ))
 
-        mkdir -p /mnt/vol/data
+        sudo mkdir -p /mnt/vol/data
         cernopendata-client get-file-locations --recid {{inputs.parameters.recid}} --protocol xrootd > /mnt/vol/files_{{inputs.parameters.recid}}.txt;
         sed -n '{{inputs.parameters.firstFile}},'$realLastFile'p;'$lastFile'q' /mnt/vol/files_{{inputs.parameters.recid}}.txt > /mnt/vol/data/scatter_files.txt
 

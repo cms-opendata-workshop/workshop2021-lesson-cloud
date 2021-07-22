@@ -1,7 +1,7 @@
 ---
 title: "Hands-on: Accessing your K8s cluster"
 teaching: 0
-exercises: 20
+exercises: 45
 questions:
 - "How do I join the GCP project for these hands-on activities?"
 - "What GCP resources do I have?"
@@ -29,14 +29,9 @@ As it is possible to automate the process of creating resources in the cloud, we
 
 Every one of you will have your own Kubernetes cluster already created. Remember we went through the trouble, yesterday, of creating the cluster by hand.  We did not even finish because all the needed elements require some time (and knowledge) to be set up.  The good news is that we have taken care of that for you.
 
-If we could make some image of the setup of the cluster you will be given, it would look something like this:
-
-![](../fig/clusterArch.png)
-
-Your instructor will explain a bit more what is meant with each element is this figure, but it essentially shows all they *toys* that have been set up for you.  The most relevant are the access to a an abstraction of disk space, called *pvc* (persistent volume claim), and an http fileserver that will allow you to access from outside the files you will be producing in this disk.  Also, some processes (in pods), which belong to this tool called `Argo` that we mentioned yesterday, are also running already on your cluster.  This will allow you to execute *workflows* for your analysis.
+Your cluster contains all the *toys* that you need to run some analysis workflow and extract the output.  The most relevant are the access to a an abstraction of disk space, called *pvc* (persistent volume claim), and an http fileserver that will allow you to access from outside the files you will be producing in this disk.  Also, some processes (in pods), which belong to this tool called `Argo` that we mentioned yesterday, are also running already on your cluster.  This will allow you to execute *workflows* for your analysis.
 
 Each participant has a special `ID` consisting from the first 7 letters of the participant's email `[0-9a-z]`.  All the resources you will see later reflect this fact:
-
 
 > ## Resources
 >
