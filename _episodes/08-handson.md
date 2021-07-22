@@ -173,7 +173,7 @@ Submit your workflow and get the results.
   
 You can open the http file server assigned to your cluster to see the histogram file and to download the merged output file `poetoutput.root`
 
-Will you be able to change this file to process the dataset of your choice?, the files of your choice?, etc.?
+Will you be able to change the workflow file to process the dataset of your choice?, the numebr of files of your choice?, etc.? Note that to run over all events in each file, you can set the number of events to -1.
 
 
 
