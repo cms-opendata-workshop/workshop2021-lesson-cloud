@@ -1,4 +1,4 @@
-# argo-wf-volume.ysml
+# argo-wf-volume.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
@@ -8,7 +8,7 @@ spec:
   volumes:
     - name: task-pv-storage
       persistentVolumeClaim:
-        claimName: nfs-1
+        claimName: nfs-<ID>
   templates:
   - name: test-hostpath
     script:

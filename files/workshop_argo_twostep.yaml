@@ -1,0 +1,92 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: twostep-test-
+spec:
+  entrypoint: example
+  volumes:
+  - name: task-pv-storage
+    persistentVolumeClaim:
+      claimName: nfs-<ID>
+  arguments:
+    parameters:
+    - name: processName
+      value: 'DoubleMuParked'
+    - name: firstFile
+      value: 3
+    - name: nFiles
+      value: 4
+    - name: recid
+      value: 6004
+
+  templates:
+  - name: example
+    inputs:
+      parameters:
+      - name: processName
+      - name: firstFile
+      - name: nFiles
+      - name: recid
+    dag:
+      tasks:
+      - name: write-step
+        template: write-files-step-template
+        arguments:
+         parameters:
+          - name: firstFile
+            value: "{{inputs.parameters.firstFile}}"
+          - name: nFiles
+            value: "{{inputs.parameters.nFiles}}"
+          - name: recid
+            value: "{{inputs.parameters.recid}}"
+      - name: generate
+        dependencies: [write-step]
+        template: gen-list-template
+        arguments:
+         parameters:
+          - name: firstFile
+            value: "{{inputs.parameters.firstFile}}"
+          - name: nFiles
+            value: "{{inputs.parameters.nFiles}}"
+
+  - name: write-files-step-template
+    inputs:
+      parameters:
+      - name: firstFile
+      - name: nFiles
+      - name: recid
+    script:
+      image: cernopendata/cernopendata-client
+      command: [bash]
+      source: |
+        lastFile=$(( {{inputs.parameters.nFiles}}+{{inputs.parameters.firstFile}} ))
+        realLastFile=$(( $lastFile - 1 ))
+
+        mkdir -p /mnt/vol/data
+        cernopendata-client get-file-locations --recid {{inputs.parameters.recid}} --protocol xrootd > /mnt/vol/files_{{inputs.parameters.recid}}.txt;
+        sed -n '{{inputs.parameters.firstFile}},'$realLastFile'p;'$lastFile'q' /mnt/vol/files_{{inputs.parameters.recid}}.txt > /mnt/vol/data/scatter_files.txt
+
+      volumeMounts:
+      - name: task-pv-storage
+        mountPath: /mnt/vol
+      resources:
+        limits:
+          memory: 2Gi
+        requests:
+          memory: 1.7Gi
+          cpu: 750m
+
+  - name: gen-list-template
+    inputs:
+      parameters:
+      - name: nFiles
+      - name: firstFile
+    script:
+      image: python:alpine3.6
+      command: [python]
+      source: |
+        import json
+        import sys
+        begin = {{inputs.parameters.nFiles}}-1
+        end = {{inputs.parameters.firstFile}}+{{inputs.parameters.nFiles}}
+        json.dump([i for i in range(begin,end)], sys.stdout)
