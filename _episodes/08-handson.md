@@ -160,16 +160,18 @@ Now we are going to run some serious workflow.  What we will be doing here is to
 We will start by automatically getting the list of files from the cern open portal with the containerized [`cernopendata-client` tool](https://cernopendata-client.readthedocs.io/en/latest/).  
   
 Then we will generate a list of those files that we want to process;  we will then run a version of the `POET` code, then merge the output files into a single `ROOT` file and finally run a simplified version of the `EventLoopAnalysisTemplate` to obtain a test histogram to see if everything went well.
-
+  
 Dowload the yaml file with:
 
 ```bash
 wget https://raw.githubusercontent.com/cms-opendata-workshop/workshop2021-poetpayload-cloud/master/PhysObjectExtractor/cloud/workshop_argo.yaml
 ```
 
-Inpect it carefully and try to make sense of logic.  This is a good time to ask the experts in the room!
+Inspect it carefully and try to make sense of logic.  This is a good time to ask the experts in the room!
 
 Submit your workflow and get the results.
+  
+You can open the http file server assigned to your cluster to see the histogram file and to download the merged output file `poetoutput.root`
 
 Will you be able to change this file to process the dataset of your choice?, the files of your choice?, etc.?
 
