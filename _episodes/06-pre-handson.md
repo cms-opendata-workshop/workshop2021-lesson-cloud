@@ -62,14 +62,14 @@ First, notice, by looking at the top of your web browser, that you are already i
 
 To connect to your cluster we are going to use the GCP CloudShell. Head to GCP > Kubernetes Engine > Clusters:
 
-![image](/fig/gke.png)
+![image](../fig/gke.png)
 
 ---
 
 > ## Remmember
 > You can always use the filter with your ID to list only your resources
 >
-> ![image](/fig/filter.png)
+> ![image](../fig/filter.png)
 {: .discussion}
 
 ---
@@ -78,7 +78,7 @@ Find your cluster, press connect and choose **RUN IN CLOUD SHELL** at the emergi
 
 Press `Authorize` if prompted to do so.
 
-![image](/fig/connect_1.png)
+![image](../fig/connect_1.png)
 
 
 ## Getting to know your cluster
